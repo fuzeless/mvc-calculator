@@ -5,7 +5,7 @@ var history = require('../models/calculator-history');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { 
-    title: 'Express',
+    title: 'MVC Calculator',
     history,
 });
 });

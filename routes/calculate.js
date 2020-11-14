@@ -8,7 +8,6 @@ const handleCalculate = (input) => {
 }
 
 router.post('/', function(req, res, next) {
-  console.log(req.body);
   handleCalculate(req.body.input);
   res.redirect('/')
 });
