@@ -5,45 +5,45 @@
     <div class="row">
       <div class="col">
         <h1>Hello MVC Calculator</h1>
-        <table>
-          <tr>
-            <form method="POST" action="/calculate">
+        <form method="POST" action="/calculate">
+          <table>
+            <tr>
               <td colspan="4">
                 <input name="input" type="text" id="input-field" class="form-control"
                   value="<%= history.read(history.length() - 1).result %>">
               </td>
-          </tr>
-          <tr>
-            <td><button type="button" class="btn btn-outline-primary bracket" data-bracket="(">(</button></td>
-            <td><button type="button" class="btn btn-outline-primary bracket" data-bracket=")">)</button></td>
-            <td><button type="button" class="btn btn-outline-primary backspace">⬅</button></td>
-            <td><button type="button" class="btn btn-outline-primary clear">Clear</button></td>
-          </tr>
-          <tr>
-            <td><button type="button" class="btn btn-outline-primary number" data-number="7">7</button></td>
-            <td><button type="button" class="btn btn-outline-primary number" data-number="8">8</button></td>
-            <td><button type="button" class="btn btn-outline-primary number" data-number="9">9</button></td>
-            <td><button type="button" class="btn btn-outline-primary operator" data-operator="+">➕</button></td>
-          </tr>
-          <tr>
-            <td><button type="button" class="btn btn-outline-primary number" data-number="4">4</button></td>
-            <td><button type="button" class="btn btn-outline-primary number" data-number="5">5</button></td>
-            <td><button type="button" class="btn btn-outline-primary number" data-number="6">6</button></td>
-            <td><button type="button" class="btn btn-outline-primary operator" data-operator="-">➖</button></td>
-          </tr>
-          <tr>
-            <td><button type="button" class="btn btn-outline-primary number" data-number="1">1</button></td>
-            <td><button type="button" class="btn btn-outline-primary number" data-number="2">2</button></td>
-            <td><button type="button" class="btn btn-outline-primary number" data-number="3">3</button></td>
-            <td><button type="button" class="btn btn-outline-primary operator" data-operator="*">✖</button></td>
-          </tr>
-          <tr>
-            <td><button type="button" class="btn btn-outline-primary number" data-number="0">0</button></td>
-            <td><button type="button" class="btn btn-outline-primary separator" data-separator=".">.</button></td>
-            <td><button type="submit" class="btn btn-primary equal">=</button></td>
-            <td><button type="button" class="btn btn-outline-primary operator" data-operator="/">➗</button></td>
-          </tr>
-        </table>
+            </tr>
+            <tr>
+              <td><button type="button" class="btn btn-outline-primary bracket" data-bracket="(">(</button></td>
+              <td><button type="button" class="btn btn-outline-primary bracket" data-bracket=")">)</button></td>
+              <td><button type="button" class="btn btn-outline-primary backspace">⬅</button></td>
+              <td><button type="button" class="btn btn-outline-primary clear">Clear</button></td>
+            </tr>
+            <tr>
+              <td><button type="button" class="btn btn-outline-primary number" data-number="7">7</button></td>
+              <td><button type="button" class="btn btn-outline-primary number" data-number="8">8</button></td>
+              <td><button type="button" class="btn btn-outline-primary number" data-number="9">9</button></td>
+              <td><button type="button" class="btn btn-outline-primary operator" data-operator="+">➕</button></td>
+            </tr>
+            <tr>
+              <td><button type="button" class="btn btn-outline-primary number" data-number="4">4</button></td>
+              <td><button type="button" class="btn btn-outline-primary number" data-number="5">5</button></td>
+              <td><button type="button" class="btn btn-outline-primary number" data-number="6">6</button></td>
+              <td><button type="button" class="btn btn-outline-primary operator" data-operator="-">➖</button></td>
+            </tr>
+            <tr>
+              <td><button type="button" class="btn btn-outline-primary number" data-number="1">1</button></td>
+              <td><button type="button" class="btn btn-outline-primary number" data-number="2">2</button></td>
+              <td><button type="button" class="btn btn-outline-primary number" data-number="3">3</button></td>
+              <td><button type="button" class="btn btn-outline-primary operator" data-operator="*">✖</button></td>
+            </tr>
+            <tr>
+              <td><button type="button" class="btn btn-outline-primary number" data-number="0">0</button></td>
+              <td><button type="button" class="btn btn-outline-primary separator" data-separator=".">.</button></td>
+              <td><button type="submit" class="btn btn-primary equal">=</button></td>
+              <td><button type="button" class="btn btn-outline-primary operator" data-operator="/">➗</button></td>
+            </tr>
+          </table>
         </form>
       </div>
       <div class="col">
