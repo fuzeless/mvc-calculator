@@ -1,0 +1,139 @@
+<% include top %>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>Hello MVC Calculator</h1>
+        <table>
+          <tr>
+            <form method="POST" action="/calculate">
+              <td colspan="4">
+                <input name="input" type="text" id="input-field" class="form-control"
+                  value="<%= history.read(history.length() - 1).result %>">
+              </td>
+          </tr>
+          <tr>
+            <td><button type="button" class="btn btn-outline-primary bracket" data-bracket="(">(</button></td>
+            <td><button type="button" class="btn btn-outline-primary bracket" data-bracket=")">)</button></td>
+            <td><button type="button" class="btn btn-outline-primary backspace">⬅</button></td>
+            <td><button type="button" class="btn btn-outline-primary clear">Clear</button></td>
+          </tr>
+          <tr>
+            <td><button type="button" class="btn btn-outline-primary number" data-number="7">7</button></td>
+            <td><button type="button" class="btn btn-outline-primary number" data-number="8">8</button></td>
+            <td><button type="button" class="btn btn-outline-primary number" data-number="9">9</button></td>
+            <td><button type="button" class="btn btn-outline-primary operator" data-operator="+">➕</button></td>
+          </tr>
+          <tr>
+            <td><button type="button" class="btn btn-outline-primary number" data-number="4">4</button></td>
+            <td><button type="button" class="btn btn-outline-primary number" data-number="5">5</button></td>
+            <td><button type="button" class="btn btn-outline-primary number" data-number="6">6</button></td>
+            <td><button type="button" class="btn btn-outline-primary operator" data-operator="-">➖</button></td>
+          </tr>
+          <tr>
+            <td><button type="button" class="btn btn-outline-primary number" data-number="1">1</button></td>
+            <td><button type="button" class="btn btn-outline-primary number" data-number="2">2</button></td>
+            <td><button type="button" class="btn btn-outline-primary number" data-number="3">3</button></td>
+            <td><button type="button" class="btn btn-outline-primary operator" data-operator="*">✖</button></td>
+          </tr>
+          <tr>
+            <td><button type="button" class="btn btn-outline-primary number" data-number="0">0</button></td>
+            <td><button type="button" class="btn btn-outline-primary separator" data-separator=".">.</button></td>
+            <td><button type="submit" class="btn btn-primary equal">=</button></td>
+            <td><button type="button" class="btn btn-outline-primary operator" data-operator="/">➗</button></td>
+          </tr>
+        </table>
+        </form>
+      </div>
+      <div class="col">
+        <h1>History</h1>
+        <table class="table table-bordered table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Operation</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% let length = history.length(); %>
+            <% for (let i = 0; i < length; ++i){ %>
+            <tr>
+              <td><%= history.read(i).operation %></td>
+              <td><%= history.read(i).result %></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script>
+    let inputField = <%= history.read(history.length() - 1).result %>;
+
+    function setInputField(inputField) {
+      document.getElementById("input-field").value = inputField;
+    }
+
+    function handleNumberClick(event) {
+      inputField += (event.target.dataset.number);
+      setInputField(inputField);
+    }
+
+    function handleSelectorClick(event) {
+      inputField += (event.target.dataset.separator);
+      setInputField(inputField);
+    }
+
+    function handleOperatorClick(event) {
+      inputField += (event.target.dataset.operator);
+      setInputField(inputField);
+    }
+
+    function handleEqualClick(event) {
+      setInputField(inputField);
+    }
+
+    function handleBackSpaceClick() {
+      let temp_input_field = inputField.split('');
+      temp_input_field.pop();
+      inputField = temp_input_field.join('');
+      setInputField(inputField);
+    }
+
+    function handleClearClick() {
+      inputField = '';
+      setInputField(inputField)
+    }
+
+    function handleBracketClick(event) {
+      inputField += event.target.dataset.bracket;
+      setInputField(inputField);
+    }
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+      const numberButtons = document.querySelectorAll(".number");
+      numberButtons.forEach((button) => {
+        button.addEventListener("click", (event) => handleNumberClick(event));
+      })
+
+      document.querySelector(".separator").addEventListener("click", (event) => handleSelectorClick(event));
+
+      const operatorButtons = document.querySelectorAll(".operator");
+      operatorButtons.forEach((button) => {
+        button.addEventListener("click", (event) => handleOperatorClick(event));
+      })
+
+      document.querySelector(".equal").addEventListener("click", handleEqualClick);
+      document.querySelector(".backspace").addEventListener("click", handleBackSpaceClick);
+      document.querySelector(".clear").addEventListener("click", handleClearClick);
+
+      const bracketButtons = document.querySelectorAll(".bracket");
+      bracketButtons.forEach((button) => {
+        button.addEventListener("click", (event) => handleBracketClick(event))
+      })
+    })
+  </script>
+</body>
+
+<% include bottom %>
