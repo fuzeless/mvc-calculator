@@ -2,3 +2,7 @@
   width: 100px;
   height: 50px;
 }
+.delete-history {
+  width: fit-content;
+  height: fit-content;
+}

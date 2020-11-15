@@ -24,8 +24,8 @@ exports.read = function (key) {
   return history[key];
 }
 
-exports.destroy = function (key) {
-  delete history[key];
+exports.delete = function (key) {
+  history.splice(key, 1);
 }
 
 exports.keys = function () {

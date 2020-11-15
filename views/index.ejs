@@ -53,6 +53,7 @@
             <tr>
               <th>Operation</th>
               <th>Result</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -61,6 +62,10 @@
             <tr>
               <td><%= history.read(i).operation %></td>
               <td><%= history.read(i).result %></td>
+              <form method="POST" action="/delete-history">
+                <td><button name="index" type="submit" class="btn btn-danger delete-history"
+                    value="<%= i %>">Delete</button></td>
+              </form>
             </tr>
             <% } %>
           </tbody>
